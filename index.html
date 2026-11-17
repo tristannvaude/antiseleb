@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cek Follow Balik Instagram</title>
+<style>
+:root{--bg:#f4f5f9;--surface:#fff;--ink:#141a2a;--mute:#5d667a;--line:#e2e6ef;--accent:#4f46e5;--accent2:#7c3aed;--accent-ink:#fff;--soft:#eef0ff;--warn:#c2410c;--ok:#15803d;--shadow:0 1px 2px rgba(20,26,42,.06),0 8px 24px rgba(20,26,42,.06);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1118;--surface:#161c27;--ink:#eaeef6;--mute:#97a1b5;--line:#252e3d;--accent:#8b85ff;--accent2:#b08cff;--accent-ink:#0d0b24;--soft:#1e2240;--warn:#fb923c;--ok:#4ade80;--shadow:none;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1118;--surface:#161c27;--ink:#eaeef6;--mute:#97a1b5;--line:#252e3d;--accent:#8b85ff;--accent2:#b08cff;--accent-ink:#0d0b24;--soft:#1e2240;--warn:#fb923c;--ok:#4ade80;--shadow:none;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:680px;margin:0 auto;padding:28px 16px 40px}
+.hero{text-align:center;padding:8px 0 24px}
+.logo{width:56px;height:56px;border-radius:16px;margin:0 auto 16px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 8px 20px rgba(79,70,229,.3)}
+h1{font-size:clamp(1.6rem,6vw,2.2rem);line-height:1.15;margin:0 0 10px;letter-spacing:-.03em}
+.lead{margin:0 auto;max-width:480px;color:var(--mute)}
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.chip{font-size:.8rem;font-weight:600;color:var(--accent);background:var(--soft);padding:5px 12px;border-radius:99px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}
+.card h2{font-size:1.1rem;margin:0 0 4px;letter-spacing:-.01em}
+.card>p.sub{margin:0 0 16px;color:var(--mute);font-size:.92rem}
+.hd{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.num{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:.85rem;font-weight:700;color:var(--accent-ink);background:var(--accent)}
+details summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"";width:10px;height:10px;border-right:2px solid var(--mute);border-bottom:2px solid var(--mute);transform:rotate(45deg);transition:transform .2s;margin:0 4px 4px 0}
+details[open] summary::after{transform:rotate(-135deg);margin-bottom:-4px}
+details summary .hd{margin:0}
+.steps{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:14px}
+.step{display:flex;gap:12px;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.step .num{width:26px;height:26px;font-size:.8rem;margin-top:1px}
+.step .body{flex:1;min-width:0}
+.step p{margin:0 0 10px;font-size:.95rem}
+.shot{position:relative;width:100%;max-width:240px;aspect-ratio:9/16;border:1.5px dashed var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
+.shot span{position:absolute;inset:0;display:grid;place-items:center;color:var(--mute);font-weight:600;font-size:.85rem}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--surface)}
+.drop{display:block;position:relative;border:1.5px dashed var(--line);border-radius:12px;padding:14px 16px;margin-bottom:12px;cursor:pointer;transition:border-color .15s,background .15s}
+.drop:hover,.drop:focus-within{border-color:var(--accent);background:var(--soft)}
+.drop.ok{border-style:solid;border-color:var(--ok)}
+.drop b{display:block;font-size:.95rem}
+.drop small{display:block;color:var(--mute);font-size:.82rem;overflow-wrap:anywhere}
+.drop input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+button{font:inherit;font-weight:600;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:10px 14px;cursor:pointer}
+button.primary{width:100%;padding:13px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:0;font-size:1rem}
+button.primary:active{transform:scale(.99)}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#err{color:var(--warn);margin:10px 0 0;min-height:1.2em;font-size:.92rem}
+#result[hidden]{display:none}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:1.6rem;line-height:1.1;letter-spacing:-.02em}
+.stat span{color:var(--mute);font-size:.78rem}
+.stat.hl b{color:var(--accent)}
+.prog{margin:0 0 16px}
+.prog div{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .25s}
+.prog small{display:block;margin-top:6px;color:var(--mute);font-size:.82rem}
+.tools{display:flex;gap:8px;margin-bottom:10px}
+.tools input[type=search]{flex:1;min-width:0;font:inherit;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+.seg{display:flex;gap:6px;margin-bottom:12px}
+.seg button{flex:1;padding:8px 6px;font-size:.85rem;border-radius:99px}
+.seg button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+ul#list{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+ul#list li{display:flex;align-items:center;gap:12px;padding:11px 14px;border-bottom:1px solid var(--line)}
+ul#list li:last-child{border-bottom:0}
+ul#list li.done .name{text-decoration:line-through;color:var(--mute)}
+.av{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:.95rem}
+.name{flex:1;min-width:0;overflow-wrap:anywhere;font-weight:600;font-size:.95rem}
+li input[type=checkbox]{flex:none;width:22px;height:22px;accent-color:var(--accent)}
+li a{flex:none;color:var(--accent);font-weight:600;font-size:.88rem;text-decoration:none;padding:6px 12px;border-radius:99px;background:var(--soft)}
+.empty{padding:20px;color:var(--mute);text-align:center}
+.note{color:var(--mute);font-size:.84rem;margin:14px 2px 0}
+footer.credit{text-align:center;color:var(--mute);font-size:.82rem;margin-top:28px;padding-top:18px;border-top:1px solid var(--line)}
+footer.credit b{color:var(--ink)}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+<div class="logo" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M17 11l5 5m0-5l-5 5"/></svg></div>
+<h1>Cek Follow Balik</h1>
+<p class="lead">Temukan akun yang kamu ikuti tapi tidak mengikuti kamu balik. Cukup unggah data resmi dari Instagram.</p>
+<div class="chips"><span class="chip">Tanpa login</span><span class="chip">Diproses di HP kamu</span><span class="chip">Data tidak dikirim ke server</span></div>
+</header>
+
+<section class="card">
+<details open>
+<summary><div class="hd"><span class="num">1</span><h2>liat dulu tutor nya ya cantik ganteng</h2></div></summary>
+<p class="sub" style="margin:12px 0 0">Ikuti 15 langkah ini untuk mendapatkan file followers dan following dalam format JSON.</p>
+<ol class="steps" id="steps"></ol>
+</details>
+</section>
+
+<section class="card">
+<div class="hd"><span class="num">2</span><h2>Unggah file JSON</h2></div>
+<p class="sub">Dua file dari langkah 15 di atas.</p>
+<label class="drop" id="d1"><b>File pengikut</b><small id="n1">followers_1.json (boleh pilih beberapa kalau ada followers_2, dst.)</small>
+<input id="fFollowers" type="file" accept=".json,application/json" multiple></label>
+<label class="drop" id="d2"><b>File mengikuti</b><small id="n2">following.json</small>
+<input id="fFollowing" type="file" accept=".json,application/json"></label>
+<button class="primary" id="go" type="button">Cek sekarang</button>
+<p id="err" role="alert"></p>
+</section>
+
+<section id="result" hidden>
+<div class="stats">
+<div class="stat"><b id="sFollowing">0</b><span>kamu ikuti</span></div>
+<div class="stat"><b id="sFollowers">0</b><span>mengikuti kamu</span></div>
+<div class="stat hl"><b id="sNot">0</b><span>tidak follow balik</span></div>
+</div>
+<div class="prog"><div><i id="bar"></i></div><small id="progTxt"></small></div>
+<div class="tools">
+<input id="q" type="search" placeholder="Cari username" aria-label="Cari username">
+<button id="copy" type="button">Salin daftar</button>
+</div>
+<div class="seg" role="group" aria-label="Filter">
+<button type="button" data-f="all" aria-pressed="true">Semua</button>
+<button type="button" data-f="todo" aria-pressed="false">Belum</button>
+<button type="button" data-f="done" aria-pressed="false">Sudah</button>
+</div>
+<ul id="list"></ul>
+<p class="note">Centang akun yang sudah kamu unfollow supaya gampang dilacak. Tombol Buka membawa kamu ke profilnya di Instagram.</p>
+</section>
+
+<footer class="credit">Dibuat oleh <b>Ananda</b> untuk nge-unfol balik anak monyet so seleb anjing</footer>
+</main>
+
+<script>
+(function(){
+  var notBack=[], doneSet={}, filter='all';
+  var $=function(id){return document.getElementById(id)};
+  try{doneSet=JSON.parse(localStorage.getItem('cfb-done')||'{}')||{}}catch(e){doneSet={}}
+
+  var S=["Buka profil Instagram kamu, lalu tap menu ☰ di kanan atas.",
+  "Pengaturan dan aktivitas, pilih <b>Akun Meta</b>.",
+  "Pilih <b>Informasi dan izin Anda</b>.",
+  "Pilih <b>Ekspor informasi Anda</b>.",
+  "Pilih profil Instagram kamu.",
+  "Pilih <b>Ekspor ke layanan eksternal</b>.",
+  "Pilih <b>Google Drive</b>, lalu tap <b>Berikutnya</b>.",
+  "Tap <b>Format</b>.",
+  "Pilih <b>JSON</b>, lalu tap <b>Simpan</b>. Jangan HTML, karena web ini cuma bisa baca JSON.",
+  "Buka <b>Sesuaikan informasi</b>, pastikan <b>Pengikut dan mengikuti</b> tercentang, lalu <b>Simpan</b>. Di <b>Rentang tanggal</b>, pilih <b>Sepanjang waktu</b>.",
+  "Tap <b>Beri tahu</b>.",
+  "Isi email kamu, tap <b>Simpan</b>, lalu tap <b>Mulai ekspor</b>.",
+  "Tunggu sampai muncul notifikasi bahwa transfer ke Google Drive sudah selesai.",
+  "Buka aplikasi <b>Google Drive</b>, tap menu ☰, lalu pilih <b>Terbaru</b>.",
+  "Cari <b>followers_1.json</b> dan <b>following.json</b> (yang dilingkari). Dua file ini yang di-upload ke web ini. Kalau tidak muncul di pemilih file, download dulu ke HP."];
+  $('steps').innerHTML=S.map(function(t,i){var n=i+1;
+    return '<li class="step"><span class="num">'+n+'</span><div class="body"><p>'+t+'</p><div class="shot"><span>image '+n+'</span><img src="images/'+n+'.jpg" alt="Langkah '+n+'" loading="lazy" onerror="this.remove()"></div></div></li>'}).join('');
+
+  function readFile(f){return new Promise(function(res,rej){var r=new FileReader();r.onload=function(){res(r.result)};r.onerror=function(){rej(new Error('Gagal membaca '+f.name))};r.readAsText(f)})}
+
+  function names(data){
+    var items=[];
+    if(Array.isArray(data))items=data;
+    else if(data&&typeof data==='object'){Object.keys(data).forEach(function(k){if(Array.isArray(data[k]))items=items.concat(data[k])})}
+    var out=[];
+    items.forEach(function(it){
+      if(!it)return;
+      var n=it.title;
+      var s=it.string_list_data&&it.string_list_data[0];
+      if(!n&&s)n=s.value;
+      if(!n&&s&&s.href){var m=s.href.match(/instagram\.com\/(?:_u\/)?([^\/?#]+)/);if(m)n=m[1]}
+      if(n)out.push(String(n).trim().toLowerCase());
+    });
+    return out;
+  }
+
+  async function parseFiles(files){
+    var all=[];
+    for(var i=0;i<files.length;i++){
+      var txt=await readFile(files[i]);
+      var data;
+      try{data=JSON.parse(txt)}catch(e){throw new Error(files[i].name+' bukan file JSON. Pastikan format unduhan kamu JSON, bukan HTML.')}
+      all=all.concat(names(data));
+    }
+    return all;
+  }
+
+  function saveDone(){try{localStorage.setItem('cfb-done',JSON.stringify(doneSet))}catch(e){}}
+
+  function color(n){var h=0;for(var i=0;i<n.length;i++)h=(h*31+n.charCodeAt(i))%360;return 'hsl('+h+',55%,48%)'}
+
+  function progress(){
+    var d=notBack.filter(function(n){return doneSet[n]}).length,t=notBack.length;
+    $('bar').style.width=(t?d/t*100:0)+'%';
+    $('progTxt').textContent=d+' dari '+t+' akun sudah di-unfollow';
+  }
+
+  function render(){
+    var q=$('q').value.trim().toLowerCase();
+    var ul=$('list');ul.innerHTML='';
+    var shown=notBack.filter(function(n){
+      if(q&&n.indexOf(q)<0)return false;
+      if(filter==='todo')return !doneSet[n];
+      if(filter==='done')return !!doneSet[n];
+      return true;
+    });
+    progress();
+    if(!shown.length){var li=document.createElement('li');li.className='empty';li.textContent=notBack.length?'Tidak ada akun yang cocok.':'Semua yang kamu ikuti mengikuti kamu balik.';ul.appendChild(li);return}
+    shown.forEach(function(n){
+      var li=document.createElement('li');if(doneSet[n])li.className='done';
+      var av=document.createElement('div');av.className='av';av.style.background=color(n);av.textContent=n.charAt(0).toUpperCase();
+      var cb=document.createElement('input');cb.type='checkbox';cb.checked=!!doneSet[n];cb.setAttribute('aria-label','Tandai '+n+' sudah di-unfollow');
+      cb.onchange=function(){if(cb.checked)doneSet[n]=1;else delete doneSet[n];saveDone();if(filter==='all'){li.className=cb.checked?'done':'';progress()}else render()};
+      var sp=document.createElement('span');sp.className='name';sp.textContent='@'+n;
+      var a=document.createElement('a');a.href='https://www.instagram.com/'+encodeURIComponent(n)+'/';a.target='_blank';a.rel='noopener noreferrer';a.textContent='Buka';
+      li.appendChild(av);li.appendChild(sp);li.appendChild(a);li.appendChild(cb);ul.appendChild(li);
+    });
+  }
+
+  function label(inp,box,txt){inp.addEventListener('change',function(){
+    var f=inp.files;if(f.length){var t=[].map.call(f,function(x){return x.name}).join(', ');$(txt).textContent=t;$(box).classList.add('ok')}
+  })}
+  label($('fFollowers'),'d1','n1');label($('fFollowing'),'d2','n2');
+
+  $('go').onclick=async function(){
+    $('err').textContent='';
+    var f1=$('fFollowers').files,f2=$('fFollowing').files;
+    if(!f1.length||!f2.length){$('err').textContent='Pilih file pengikut dan file mengikuti dulu.';return}
+    try{
+      var followers=await parseFiles(f1),following=await parseFiles(f2);
+      if(!following.length||!followers.length){$('err').textContent='Daftar kosong. Cek lagi apakah kamu memilih file yang benar (followers_1.json dan following.json).';return}
+      var fs={};followers.forEach(function(n){fs[n]=1});
+      var seen={};notBack=following.filter(function(n){if(seen[n]||fs[n])return false;seen[n]=1;return true}).sort();
+      $('sFollowing').textContent=following.length;$('sFollowers').textContent=followers.length;$('sNot').textContent=notBack.length;
+      $('result').hidden=false;render();
+      $('result').scrollIntoView({behavior:'smooth'});
+    }catch(e){$('err').textContent=e.message||'Terjadi kesalahan saat membaca file.'}
+  };
+  $('q').oninput=render;
+  [].forEach.call(document.querySelectorAll('.seg button'),function(b){b.onclick=function(){
+    filter=b.getAttribute('data-f');
+    [].forEach.call(document.querySelectorAll('.seg button'),function(x){x.setAttribute('aria-pressed',x===b)});
+    render();
+  }});
+  $('copy').onclick=function(){
+    var t=notBack.map(function(n){return '@'+n}).join('\n');
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){$('copy').textContent='Tersalin'},function(){$('copy').textContent='Gagal menyalin'})}
+    else{$('copy').textContent='Gagal menyalin'}
+    setTimeout(function(){$('copy').textContent='Salin daftar'},1800);
+  };
+})();
+</script>
+</body>
+</html>
